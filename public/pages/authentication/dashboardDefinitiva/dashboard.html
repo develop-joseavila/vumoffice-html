@@ -43,6 +43,7 @@
         
         .navbarMobile {
             background-color: white;
+            margin-left: 0;
         }
         
         .navbar-vertical.navbar-expand-xl.navbar-card .navbar-collapse,
@@ -62,19 +63,24 @@
         }
         
         main.main {
-            background-image: url("../../../assets/img/backgrounds/background-home.png");
+            background-image: url("../../../assets/img/vumOfficeImgs/background-home.png");
+            background-repeat: no-repeat;
+            /* background-size: 100% 100%; */
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
         }
         
         .navbar-vertical.navbar-expand-xl+.content .navbar-top {
             background-color: none !important;
         }
         
-        .navbarMobile {
+        .navbar-top {
             background-color: white;
         }
         
-        .navbar-top {
-            background-color: white;
+        .navbar-top .navbar-toggler {
+            margin-left: 0.375rem;
         }
         
         .iconUser {
@@ -85,7 +91,7 @@
             -webkit-box-shadow: 6px 6px 13px -1px rgba(0, 0, 0, 0.41);
             -moz-box-shadow: 6px 6px 13px -1px rgba(0, 0, 0, 0.41);
             box-shadow: 6px 6px 13px -1px rgba(0, 0, 0, 0.41);
-            border-radius: unset !important;
+            border-radius: 5px !important;
         }
         
         .oficinaBotomCopy {
@@ -106,8 +112,64 @@
         }
         
         .navbarPadding {
-            padding: 5% !important;
+            /* padding: 5% !important; */
             background-color: white;
+        }
+        
+        .avatarIcon {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .sombraNavbarInhabilitada {
+            box-shadow: unset !important;
+            margin: 0 !important;
+        }
+        
+        .navbar-vertical .toggle-icon-wrapper {
+            margin-left: 0.25rem;
+        }
+        
+        .btnIniciarSesion {
+            border: 1px;
+            border-radius: 25px;
+            height: 50px;
+            width: 300px !important;
+            display: inline !important;
+            background-color: #74E36B;
+            color: #0F4F80;
+        }
+        
+        .fontLinkLabel {
+            font-weight: 600;
+        }
+        
+        .imgVumHeader {
+            width: 20%;
+        }
+        
+        .zoom {
+            transition: transform .3s;
+        }
+        
+        .zoom:hover {
+            -ms-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            transition: transform .3s;
+        }
+        
+        @media (min-width: 1200px) {
+            .navbar-vertical-collapsed .navbar-vertical.navbar-expand-xl .navbar-collapse {
+                width: 100% !important;
+            }
+            .navbar-vertical.navbar-expand-xl+.content {
+                margin-left: 13.6rem;
+            }
+            .navbar-vertical-collapsed .navbar-vertical.navbar-expand-xl .navbar-vertical-content {
+                padding-left: 0.5rem;
+            }
         }
         
         @media only screen and (min-width: 320px) and (max-width: 736px) and (orientation: portrait) {
@@ -129,6 +191,17 @@
             .navbarMobile {
                 padding: 0% 2% 0% 0% !important;
                 background-color: unset !important;
+                margin-left: -15.1px;
+            }
+            .btnIniciarSesion {
+                width: 100% !important;
+                padding: 1%;
+            }
+            .imgVumHeader {
+                width: 70%;
+            }
+            #generalContent {
+                padding: 1% !important;
             }
         }
         
@@ -151,6 +224,17 @@
             .navbarMobile {
                 padding: 0% 2% 0% 0% !important;
                 background-color: unset !important;
+                margin-left: -15.1px;
+            }
+            .btnIniciarSesion {
+                width: 100% !important;
+                padding: 1%;
+            }
+            .imgVumHeader {
+                width: 70%;
+            }
+            #generalContent {
+                padding: 1% !important;
             }
         }
     </style>
@@ -202,9 +286,9 @@
                 <!-- ===============================================-->
                 <!-- NAVBAR BODY -->
                 <!-- ===============================================-->
-                <div class="sombraInhabilitada collapse navbar-collapse" id="navbarVerticalCollapse">
+                <div class="sombraNavbarInhabilitada collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content scrollbar navbarPadding">
-                        <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+                        <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav" style="padding: 13px;">
 
                             <li class="nav-item">
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -329,7 +413,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <div class="avatar avatar-xl">
+                                <div class="avatar avatar-xl avatarIcon">
                                     <i class="fas fa-user rounded-circle iconUser"></i>
                                 </div>
                             </a>
@@ -367,8 +451,16 @@
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-533ab411-31a3-4e27-87a1-2e6e0f25835c" id="dom-533ab411-31a3-4e27-87a1-2e6e0f25835c">
                                 <div class="row light">
 
+                                    <div class="col-md-12 text-center mb-4">
+                                        <img class="imgVumHeader" src="../../../assets/img/vumOfficeImgs/icono-vum-office-home.svg" alt="icono-vum-office-home">
+                                    </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-md-12 text-center mb-5" style="color: white;">
+                                        <h3 style="margin-bottom: 0; color: white;">¿Como te podemos ayudar?</h3>
+                                        <span style="font-size: 21px;font-weight: 100;">Jose Carlos Avila Perea</span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
                                                 <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
@@ -382,10 +474,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
-                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
+                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/desarrollo.jpg" alt="desarrollo">
                                             </div>
                                             <div class="card-body oficinaBotomCopy">
                                                 <span class="card-title tittleCardOficina">Desarrollo</span> <br>
@@ -396,10 +488,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
-                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
+                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/sst.jpg" alt="sst">
                                             </div>
                                             <div class="card-body oficinaBotomCopy">
                                                 <span class="card-title tittleCardOficina">SST</span> <br>
@@ -410,10 +502,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
-                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
+                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/bienestar.jpg" alt="bienestar">
                                             </div>
                                             <div class="card-body oficinaBotomCopy">
                                                 <span class="card-title tittleCardOficina">Bienestar</span> <br>
@@ -424,7 +516,12 @@
                                         </div>
                                     </div>
 
-
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn btnIniciarSesion d-block w-100 mt-3 fontLinkLabel" type="submit" name="submit">
+                                            <img style="width: 8%;" src="../../../assets/img/vumOfficeImgs/icono-control-ingreso-salida.svg">
+                                            Control de ingreso y salida
+                                        </button>
+                                    </div>
 
 
                                 </div>
@@ -464,77 +561,84 @@
     <!-- ===============================================-->
 
     <script>
-        window.onload = async () => {
+        window.onload = async() => {
             const elementMenu = document.querySelector('#navbarVerticalNav');
-            const menu = await obtenerMenu();
-            
-            elementMenu.innerHTML = menu + controlIngresoSalidaHtml;
+            // const menu = await obtenerMenu();
+
+            // elementMenu.innerHTML = menu + controlIngresoSalidaHtml;
         }
-  
-  
-  
-        const obtenerMenu = async () => {
-          
-          try {
-            const url = 'http://localhost:3000/api/v1/navigator/';
-            const menus = await (await fetch(url)).json();
-            let menuHtml = '';
-            console.log('\n\nData: ', menus);
-  
-            menus.forEach((menu, a) => {
-  
-                menuHtml += `
+
+
+
+        const obtenerMenu = async() => {
+
+            try {
+                const url = 'http://localhost:3000/api/v1/navigator/';
+                const menus = await (await fetch(url)).json();
+                let menuHtml = '';
+                console.log('\n\nData: ', menus);
+
+                menus.forEach((menu, a) => {
+
+                    menuHtml += `
                   <li class="nav-item">
                     <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
                       <div class="col-auto navbar-vertical-label">${menu.titulo}</div>
                       <div class="col ps-0"><hr class="mb-0 navbar-vertical-divider" /></div>
                     </div>
                 `;
-  
-                menu.subMenus.forEach((subMenu, b) => {
-                    const obj = { a, b };
-                    menuHtml += obtenerMenuHtml(subMenu, obj, true);
+
+                    menu.subMenus.forEach((subMenu, b) => {
+                        const obj = {
+                            a,
+                            b
+                        };
+                        menuHtml += obtenerMenuHtml(subMenu, obj, true);
+                    });
+
+                    menuHtml += `</li>`;
                 });
-  
-                menuHtml += `</li>`;
-            });
-  
-            return menuHtml;
-          }
-          catch(e) {
-  
-            console.error(e);
-            alert('Error al consultar el menu principal!');
-          }
+
+                return menuHtml;
+            } catch (e) {
+
+                console.error(e);
+                alert('Error al consultar el menu principal!');
+            }
         };
-  
-  
-  
+
+
+
         const nextLetter = (s) => {
-            return s.replace(/([a-zA-Z])[^a-zA-Z]*$/, function(a){
-                var c= a.charCodeAt(0);
-                switch(c){
-                    case 90: return 'A';
-                    case 122: return 'a';
-                    default: return String.fromCharCode(++c);
+            return s.replace(/([a-zA-Z])[^a-zA-Z]*$/, function(a) {
+                var c = a.charCodeAt(0);
+                switch (c) {
+                    case 90:
+                        return 'A';
+                    case 122:
+                        return 'a';
+                    default:
+                        return String.fromCharCode(++c);
                 }
             });
         }
-  
-  
+
+
         const construirId = (obj) => {
-  
+
             let nuevoid = 'menu';
-            for (let prop in obj) { nuevoid += `_${obj[prop]}`; }
-  
+            for (let prop in obj) {
+                nuevoid += `_${obj[prop]}`;
+            }
+
             return nuevoid;
         };
-  
-  
-  
-        const obtenerMenuHtml = (menu, obj, first=false) => {
-  
-          let menuHtml = `
+
+
+
+        const obtenerMenuHtml = (menu, obj, first = false) => {
+
+                let menuHtml = `
               <a class="nav-link ${(menu.tieneSubMenus) ? 'dropdown-indicator': ''}" href="#${ construirId(obj) }" data-bs-toggle="collapse" aria-expanded="false" aria-controls="${ construirId(obj) }">
                   <div class="d-flex align-items-center" style="color: #1780E8;">
                       ${ !(first) ? '' : `<span class="nav-link-icon"><i class="${menu.clasesIcono}"></i></span>` }
@@ -584,7 +688,7 @@
                 </a>
             </li>
         `;
-      </script>
+    </script>
 
     <!-- ===============================================-->
     <!--    IMPORTS JAVASCRIPTS  -->
