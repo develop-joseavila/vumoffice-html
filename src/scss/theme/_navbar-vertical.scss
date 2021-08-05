@@ -285,7 +285,7 @@ $value in $navbar-vertical-breakpoints {
             .navbar-vertical.navbar-expand-#{$item} {
                 width: $navbar-vertical-hover-width;
                 .navbar-collapse {
-                    width: $navbar-vertical-hover-width !important;
+                    // width: $navbar-vertical-hover-width !important;
                 }
                 .navbar-collapse {
                     box-shadow: $navbar-vertical-collapsed-hover-shadow;
