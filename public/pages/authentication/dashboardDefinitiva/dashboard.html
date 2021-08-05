@@ -153,6 +153,12 @@
                 background-color: unset !important;
             }
         }
+        .bi, .fas, .far {
+            font-size: 1.1em;
+        }
+        .bi.bi-person-badge {
+            font-size: 1.3em;
+        }
     </style>
 
     <!-- ===============================================-->
@@ -468,7 +474,7 @@
             const elementMenu = document.querySelector('#navbarVerticalNav');
             const menu = await obtenerMenu();
             
-            elementMenu.innerHTML = menu + controlIngresoSalidaHtml;
+            elementMenu.innerHTML = menu; // + controlIngresoSalidaHtml;
         }
   
   
@@ -479,7 +485,6 @@
             const url = 'http://localhost:3000/api/v1/navigator/';
             const menus = await (await fetch(url)).json();
             let menuHtml = '';
-            console.log('\n\nData: ', menus);
   
             menus.forEach((menu, a) => {
   
@@ -533,36 +538,33 @@
   
   
         const obtenerMenuHtml = (menu, obj, first=false) => {
+          const tipoAccion = menu.tipo_accion;
+          const tieneSubMenus = menu.subMenus.length;
+          const href = (tipoAccion === 'R') ? menu.redireccionar : ((tipoAccion === 'RI') ? '#RI' : ((tipoAccion === 'M') ? `#${ construirId(obj) }` : `#${ construirId(obj) }`));
   
           let menuHtml = `
-              <a class="nav-link ${(menu.tieneSubMenus) ? 'dropdown-indicator': ''}" href="#${ construirId(obj) }" data-bs-toggle="collapse" aria-expanded="false" aria-controls="${ construirId(obj) }">
+              <a class="nav-link ${(tieneSubMenus) ? 'dropdown-indicator': ''}" href="${ href }" ${(tieneSubMenus) ? 'data-bs-toggle="collapse"' : '' } aria-controls="${ href }" ${ (tipoAccion === 'R') ? ' target="_blank" ': '' }>
                   <div class="d-flex align-items-center" style="color: #1780E8;">
                       ${ !(first) ? '' : `<span class="nav-link-icon"><i class="${menu.clasesIcono}"></i></span>` }
                       <span class="nav-link-text ps-1" ${ (first) ? '' : 'style="color: #5e6e82;"' } >${menu.titulo}</span>
                   </div>
               </a>
-              <ul class="nav collapse false" id="${ construirId(obj) }">
-                  <li class="nav-item">
           `;
   
-          const propiedades = Object.keys(obj);
-          const nuevaProp = nextLetter(propiedades[propiedades.length-1]);
+          if (tieneSubMenus) {
   
-          if (menu.subMenus.length) {
-  
+              menuHtml += `<ul class="nav collapse false" id="${ construirId(obj) }"><li class="nav-item">`;
+
+              const propiedades = Object.keys(obj);
+              const nuevaProp = nextLetter(propiedades[propiedades.length-1]);
+
               menu.subMenus.forEach((subMenu, i) => {
-                  console.log('\n\nPropiedades: ', propiedades, ' Nueva Propiedad: '+nuevaProp);
-                  if (nuevaProp === 'e') {
-                      console.log('\n\nsubMenu: ', subMenu, '\n\n');
-                  }
                   obj[nuevaProp] = i;
                   menuHtml += obtenerMenuHtml(subMenu, obj);
-  
               });
               
+              menuHtml += `</li></ul>`;
           }
-  
-          menuHtml += `</li></ul>`;
   
           return menuHtml;
   
