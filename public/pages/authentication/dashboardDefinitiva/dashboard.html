@@ -43,6 +43,7 @@
         
         .navbarMobile {
             background-color: white;
+            margin-left: 0;
         }
         
         .navbar-vertical.navbar-expand-xl.navbar-card .navbar-collapse,
@@ -62,19 +63,24 @@
         }
         
         main.main {
-            background-image: url("../../../assets/img/backgrounds/background-home.png");
+            background-image: url("../../../assets/img/vumOfficeImgs/background-home.png");
+            background-repeat: no-repeat;
+            /* background-size: 100% 100%; */
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
         }
         
         .navbar-vertical.navbar-expand-xl+.content .navbar-top {
             background-color: none !important;
         }
         
-        .navbarMobile {
+        .navbar-top {
             background-color: white;
         }
         
-        .navbar-top {
-            background-color: white;
+        .navbar-top .navbar-toggler {
+            margin-left: 0.375rem;
         }
         
         .iconUser {
@@ -85,7 +91,7 @@
             -webkit-box-shadow: 6px 6px 13px -1px rgba(0, 0, 0, 0.41);
             -moz-box-shadow: 6px 6px 13px -1px rgba(0, 0, 0, 0.41);
             box-shadow: 6px 6px 13px -1px rgba(0, 0, 0, 0.41);
-            border-radius: unset !important;
+            border-radius: 5px !important;
         }
         
         .oficinaBotomCopy {
@@ -106,8 +112,64 @@
         }
         
         .navbarPadding {
-            padding: 5% !important;
+            /* padding: 5% !important; */
             background-color: white;
+        }
+        
+        .avatarIcon {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .sombraNavbarInhabilitada {
+            box-shadow: unset !important;
+            margin: 0 !important;
+        }
+        
+        .navbar-vertical .toggle-icon-wrapper {
+            margin-left: 0.25rem;
+        }
+        
+        .btnIniciarSesion {
+            border: 1px;
+            border-radius: 25px;
+            height: 50px;
+            width: 300px !important;
+            display: inline !important;
+            background-color: #74E36B;
+            color: #0F4F80;
+        }
+        
+        .fontLinkLabel {
+            font-weight: 600;
+        }
+        
+        .imgVumHeader {
+            width: 20%;
+        }
+        
+        .zoom {
+            transition: transform .3s;
+        }
+        
+        .zoom:hover {
+            -ms-transform: scale(1.1);
+            -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+            transition: transform .3s;
+        }
+        
+        @media (min-width: 1200px) {
+            .navbar-vertical-collapsed .navbar-vertical.navbar-expand-xl .navbar-collapse {
+                width: 100% !important;
+            }
+            .navbar-vertical.navbar-expand-xl+.content {
+                margin-left: 13.6rem;
+            }
+            .navbar-vertical-collapsed .navbar-vertical.navbar-expand-xl .navbar-vertical-content {
+                padding-left: 0.5rem;
+            }
         }
         
         @media only screen and (min-width: 320px) and (max-width: 736px) and (orientation: portrait) {
@@ -129,6 +191,17 @@
             .navbarMobile {
                 padding: 0% 2% 0% 0% !important;
                 background-color: unset !important;
+                margin-left: -15.1px;
+            }
+            .btnIniciarSesion {
+                width: 100% !important;
+                padding: 1%;
+            }
+            .imgVumHeader {
+                width: 70%;
+            }
+            #generalContent {
+                padding: 1% !important;
             }
         }
         
@@ -151,6 +224,17 @@
             .navbarMobile {
                 padding: 0% 2% 0% 0% !important;
                 background-color: unset !important;
+                margin-left: -15.1px;
+            }
+            .btnIniciarSesion {
+                width: 100% !important;
+                padding: 1%;
+            }
+            .imgVumHeader {
+                width: 70%;
+            }
+            #generalContent {
+                padding: 1% !important;
             }
         }
         .bi, .fas, .far {
@@ -194,7 +278,7 @@
                 <!-- ===============================================-->
                 <div class="d-flex align-items-center" style="padding-left: 5%;">
                     <div class="toggle-icon-wrapper">
-                        <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+                        <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Menu Principal"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     </div>
                     <a class="navbar-brand" href="index.html">
                         <div class="d-flex align-items-center py-3"><img class="me-2" src="../../../assets/img/icons/spot-illustrations/logo-vum-login.svg" alt="" width="80" />
@@ -208,9 +292,9 @@
                 <!-- ===============================================-->
                 <!-- NAVBAR BODY -->
                 <!-- ===============================================-->
-                <div class="sombraInhabilitada collapse navbar-collapse" id="navbarVerticalCollapse">
+                <div class="sombraNavbarInhabilitada collapse navbar-collapse" id="navbarVerticalCollapse">
                     <div class="navbar-vertical-content scrollbar navbarPadding">
-                        <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+                        <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav" style="padding: 13px;">
 
                             <li class="nav-item">
                                 <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
@@ -335,22 +419,23 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link pe-0" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <div class="avatar avatar-xl">
+                                <div class="avatar avatar-xl avatarIcon">
                                     <i class="fas fa-user rounded-circle iconUser"></i>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser" data-bs-popper="none">
                                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                                     <span class="dropdown-item fw-bold text-warning">¡Hola Gabriel!</span>
-
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="pages/user/settings.html">Actualiza tus datos</a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Billetera</a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Calificar empresa</a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Gran encuesta sociodemográfica </a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Onboarding </a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Reglamento interno </a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Ayuda </a>
+                                    <div id="menu_secundario">
+                                        <a class="dropdown-item" href="pages/user/settings.html">Actualiza tus datos</a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Billetera</a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Calificar empresa</a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Gran encuesta sociodemográfica </a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Onboarding </a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Reglamento interno </a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Ayuda </a>
+                                    </div>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="pages/authentication/card/logout.html">Salir</a>
                                 </div>
@@ -373,8 +458,16 @@
                             <div class="tab-pane preview-tab-pane active" role="tabpanel" aria-labelledby="tab-dom-533ab411-31a3-4e27-87a1-2e6e0f25835c" id="dom-533ab411-31a3-4e27-87a1-2e6e0f25835c">
                                 <div class="row light">
 
+                                    <div class="col-md-12 text-center mb-4">
+                                        <img class="imgVumHeader" src="../../../assets/img/vumOfficeImgs/icono-vum-office-home.svg" alt="icono-vum-office-home">
+                                    </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-md-12 text-center mb-5" style="color: white;">
+                                        <h3 style="margin-bottom: 0; color: white;">¿Como te podemos ayudar?</h3>
+                                        <span style="font-size: 21px;font-weight: 100;">Jose Carlos Avila Perea</span>
+                                    </div>
+
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
                                                 <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
@@ -388,10 +481,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
-                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
+                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/desarrollo.jpg" alt="desarrollo">
                                             </div>
                                             <div class="card-body oficinaBotomCopy">
                                                 <span class="card-title tittleCardOficina">Desarrollo</span> <br>
@@ -402,10 +495,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
-                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
+                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/sst.jpg" alt="sst">
                                             </div>
                                             <div class="card-body oficinaBotomCopy">
                                                 <span class="card-title tittleCardOficina">SST</span> <br>
@@ -416,10 +509,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-12 col-lg-3 mb-4">
+                                    <div class="col-sm-12 col-lg-3 mb-4 zoom">
                                         <div class="card sombraCards">
                                             <div class="card-img-top">
-                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/rrhh.jpg" alt="rrhh">
+                                                <img class="img-fluid" src="../../../assets/img/vumOfficeImgs/bienestar.jpg" alt="bienestar">
                                             </div>
                                             <div class="card-body oficinaBotomCopy">
                                                 <span class="card-title tittleCardOficina">Bienestar</span> <br>
@@ -430,7 +523,12 @@
                                         </div>
                                     </div>
 
-
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn btnIniciarSesion d-block w-100 mt-3 fontLinkLabel" type="submit" name="submit">
+                                            <img style="width: 8%;" src="../../../assets/img/vumOfficeImgs/icono-control-ingreso-salida.svg">
+                                            Control de ingreso y salida
+                                        </button>
+                                    </div>
 
 
                                 </div>
@@ -469,104 +567,255 @@
     <!--    END MAIN CONTENT -->
     <!-- ===============================================-->
 
-    <script>
-        window.onload = async () => {
-            const elementMenu = document.querySelector('#navbarVerticalNav');
-            const menu = await obtenerMenu();
+
+
+    <!-- ===========================================================================-->
+    <!-- Para controlar lo que ocurre al cerrar un modal se debe escuchar al evento -->
+    <!--                             "hide.bs.modal"                                -->
+    <!-- ===========================================================================-->
+
+    <!-- ===============================================================-->
+    <!-- Para Abrir un modal agregar a una etiqueta button la propiedad -->
+    <!--                data-bs-target="#idDeMiModal"                   -->
+    <!-- ===============================================================-->
+
+    <div class="modal fade" id="modalImagenRedireccion" aria-hidden="true" aria-labelledby="modalLabelImagenRedireccion" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
             
-            elementMenu.innerHTML = menu; // + controlIngresoSalidaHtml;
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            
+            <div class="modal-body" style="padding: 0;">
+                <a href="#" id="modalUrlImagenRedireccion">
+                    <img id="modalImgImagenRedireccion" style="width: 100%;">
+                </a>
+            </div>
+            
+                <div class="modal-footer" style="height: 35px;"></div>
+            
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalPricipal" aria-hidden="true" aria-labelledby="modalLabelPrincipal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabelPrincipal">Modal 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Hide this modal and show the first with the button below.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#modalImagenRedireccion" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let arrayMenu;
+        let elementMenuPrincipal;
+        let elementMenuSecundario;
+
+        let urlImagenRedireccion;
+        let elementModalPrincipal;
+        let elementModalRedireccion;
+        let elementModalUrlRedireccion;
+        let elementModalImgImagenRedireccion;
+
+        window.onload = async() => {
+            elementMenuPrincipal = document.querySelector('#navbarVerticalNav');
+            elementMenuSecundario = document.querySelector('#menu_secundario');
+
+            elementModalPrincipal = document.querySelector('#modalPricipal');
+            elementModalRedireccion = document.querySelector('#modalImagenRedireccion');
+            elementModalUrlRedireccion = document.querySelector('#modalUrlImagenRedireccion');
+            elementModalImgImagenRedireccion = document.querySelector('#modalImgImagenRedireccion');
+
+            elementModalRedireccion.addEventListener('show.bs.modal', abriendoModalRedireccion);
+
+            arrayMenu = await consultarMenu();
+            elementMenuPrincipal.innerHTML = await obtenerMenuPrincipal(arrayMenu[0]);
+            elementMenuSecundario.innerHTML = await obtenerMenuSecundario(arrayMenu[1]);
         }
-  
-  
-  
-        const obtenerMenu = async () => {
-          
-          try {
-            const url = 'http://localhost:3000/api/v1/navigator/';
-            const menus = await (await fetch(url)).json();
-            let menuHtml = '';
-  
-            menus.forEach((menu, a) => {
-  
-                menuHtml += `
-                  <li class="nav-item">
-                    <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                      <div class="col-auto navbar-vertical-label">${menu.titulo}</div>
-                      <div class="col ps-0"><hr class="mb-0 navbar-vertical-divider" /></div>
-                    </div>
-                `;
-  
-                menu.subMenus.forEach((subMenu, b) => {
-                    const obj = { a, b };
-                    menuHtml += obtenerMenuHtml(subMenu, obj, true);
-                });
-  
-                menuHtml += `</li>`;
-            });
-  
-            return menuHtml;
-          }
-          catch(e) {
-  
-            console.error(e);
-            alert('Error al consultar el menu principal!');
-          }
+
+
+        const test = (e) => {
+            if (e.target.hash) {
+                console.log('TEST TEST');
+                e.preventDefault();
+            }
+        }
+
+
+        const abriendoModalRedireccion = (e) => {
+
+            const button = event.relatedTarget;
+            const imgUrl = button.getAttribute('img-url');
+            const urlRedireccion = button.getAttribute('img-redireccion');
+            const target = (urlRedireccion && urlRedireccion !== '#') ? '_blank' : '_self';
+
+            elementModalImgImagenRedireccion.src = (imgUrl) ? `../../../${ imgUrl }` : '';
+            elementModalUrlRedireccion.href = urlRedireccion;
+            elementModalUrlRedireccion.target = target;
+            elementModalUrlRedireccion.addEventListener('click', test);
         };
   
-  
-  
+
+
+        const consultarMenu = async () => {
+          
+            try {
+                const url = 'http://localhost:3000/api/v1/navigator/';
+                return (await fetch(url)).json();
+            }
+            catch (e) {
+                console.error(e);
+                alert('Error al consultar el menu principal!');
+            }
+        };
+
+
+        const obtenerMenuPrincipal = async (menus) => {
+            let menuHtml = '';
+
+            try {
+                menus.subMenus.forEach((menu, a) => {
+
+                    menuHtml += `
+                        <li class="nav-item">
+                            <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                                <div class="col-auto navbar-vertical-label">${menu.titulo}</div>
+                                <div class="col ps-0"><hr class="mb-0 navbar-vertical-divider" /></div>
+                            </div>
+                    `;
+
+                    menu.subMenus.forEach((subMenu, b) => {
+                        const obj = {
+                            a: a+1,
+                            b: b+1
+                        };
+                        menuHtml += obtenerMenuHtml(subMenu, obj, true);
+                    });
+
+                    menuHtml += `</li>`;
+                });
+
+                return menuHtml;
+            } catch (e) {
+
+                console.error(e);
+                alert('Error al construir el menu principal!');
+            }
+        };
+
+
+
+        const obtenerMenuSecundario = (menu) => {
+
+            let menuSecundarioHtml = '';
+
+            menu.subMenus.forEach(subMenu => {
+
+                menuSecundarioHtml += `<a class="dropdown-item" href="#">${subMenu.titulo}</a>`;
+
+            });
+
+            return menuSecundarioHtml;
+        }
+
+
+
         const nextLetter = (s) => {
-            return s.replace(/([a-zA-Z])[^a-zA-Z]*$/, function(a){
-                var c= a.charCodeAt(0);
-                switch(c){
-                    case 90: return 'A';
-                    case 122: return 'a';
-                    default: return String.fromCharCode(++c);
+            return s.replace(/([a-zA-Z])[^a-zA-Z]*$/, function(a) {
+                var c = a.charCodeAt(0);
+                switch (c) {
+                    case 90:
+                        return 'A';
+                    case 122:
+                        return 'a';
+                    default:
+                        return String.fromCharCode(++c);
                 }
             });
         }
-  
-  
+
+
         const construirId = (obj) => {
-  
+
             let nuevoid = 'menu';
-            for (let prop in obj) { nuevoid += `_${obj[prop]}`; }
-  
+            for (let prop in obj) {
+                nuevoid += `_${obj[prop]}`;
+            }
+
             return nuevoid;
         };
-  
+
+
+
+        const definirPropiedadesSubMenu = (menu, obj, first) => {
+            const { descripcion, clasesIcono, titulo, redireccionar, recurso, tipoAccion } = menu;
+            const tieneSubMenus = !!(menu.subMenus.length);
+
+            return {
+                titulo,
+                recurso,
+                tipoAccion,
+                clasesIcono,
+                descripcion,
+                redireccionar,
+                tieneSubMenus,
+                colorTitulo: (first) ? '' : 'color: #5e6e82;',
+                target: (tipoAccion === 'R') ? 'target="_blank"' : '',
+                dropDown: (tieneSubMenus) ? 'dropdown-indicator' : '',
+                collapse: (tieneSubMenus) ? 'data-bs-toggle="collapse"' : '',
+                href: (tipoAccion === 'R') ? redireccionar : `#${ construirId(obj) }`,
+                icono: !(first) ? '' : `<span class="nav-link-icon"><i class="${ clasesIcono }"></i></span>`,
+                abrirModal: (tipoAccion === 'RI') ?  `img-redireccion="${ redireccionar ?? '#' }" img-url="${ recurso ?? '' }" data-bs-toggle="modal" data-bs-target="#modalImagenRedireccion"` : ''
+            }
+        };
+
+
   
   
         const obtenerMenuHtml = (menu, obj, first=false) => {
-          const tipoAccion = menu.tipo_accion;
-          const tieneSubMenus = menu.subMenus.length;
-          const href = (tipoAccion === 'R') ? menu.redireccionar : ((tipoAccion === 'RI') ? '#RI' : ((tipoAccion === 'M') ? `#${ construirId(obj) }` : `#${ construirId(obj) }`));
-  
-          let menuHtml = `
-              <a class="nav-link ${(tieneSubMenus) ? 'dropdown-indicator': ''}" href="${ href }" ${(tieneSubMenus) ? 'data-bs-toggle="collapse"' : '' } aria-controls="${ href }" ${ (tipoAccion === 'R') ? ' target="_blank" ': '' }>
-                  <div class="d-flex align-items-center" style="color: #1780E8;">
-                      ${ !(first) ? '' : `<span class="nav-link-icon"><i class="${menu.clasesIcono}"></i></span>` }
-                      <span class="nav-link-text ps-1" ${ (first) ? '' : 'style="color: #5e6e82;"' } >${menu.titulo}</span>
-                  </div>
-              </a>
-          `;
-  
-          if (tieneSubMenus) {
-  
-              menuHtml += `<ul class="nav collapse false" id="${ construirId(obj) }"><li class="nav-item">`;
 
-              const propiedades = Object.keys(obj);
-              const nuevaProp = nextLetter(propiedades[propiedades.length-1]);
-
-              menu.subMenus.forEach((subMenu, i) => {
-                  obj[nuevaProp] = i;
-                  menuHtml += obtenerMenuHtml(subMenu, obj);
-              });
-              
-              menuHtml += `</li></ul>`;
-          }
+            const {
+                tieneSubMenus, colorTitulo, target, dropDown, collapse, href, icono, abrirModal,
+                descripcion, clasesIcono, titulo, redireccionar, recurso, tipoAccion
+            } = definirPropiedadesSubMenu(menu, obj, first);
   
-          return menuHtml;
+            let menuHtml = `
+                <a class="nav-link ${ dropDown }" href="${ href }" ${ abrirModal } ${ collapse } aria-controls="${ href }" ${ target } title="${ descripcion }">
+                    <div class="d-flex align-items-center" style="color: #1780E8;">
+                        ${ icono }
+                        <span class="nav-link-text ps-1" style="${ colorTitulo }" >${ titulo }</span>
+                    </div>
+                </a>
+            `;
+
+            if (tieneSubMenus) {
+
+                menuHtml += `<ul class="nav collapse false" id="${ construirId(obj) }"><li class="nav-item">`;
+
+                const propiedades = Object.keys(obj);
+                const nuevaProp = nextLetter(propiedades[propiedades.length-1]);
+
+                menu.subMenus.forEach((subMenu, i) => {
+                    obj[nuevaProp] = i+1;
+
+                    menuHtml += obtenerMenuHtml(subMenu, obj);
+                });
+
+                delete obj[nuevaProp];
+                
+                menuHtml += `</li></ul>`;
+            }
+
+            return menuHtml;
   
         }
   
@@ -586,7 +835,7 @@
                 </a>
             </li>
         `;
-      </script>
+    </script>
 
     <!-- ===============================================-->
     <!--    IMPORTS JAVASCRIPTS  -->
