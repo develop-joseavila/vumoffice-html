@@ -295,6 +295,12 @@
                 max-height: unset;
             }
         }
+        .bi, .fas, .far {
+            font-size: 1.1em;
+        }
+        .bi.bi-person-badge {
+            font-size: 1.3em;
+        }
     </style>
 
     <!-- ===============================================-->
@@ -330,7 +336,7 @@
                 <!-- ===============================================-->
                 <div class="d-flex align-items-center" style="padding-left: 5%;">
                     <div class="toggle-icon-wrapper">
-                        <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Menú"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
+                        <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Menú Principal"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
                     </div>
                     <a class="navbar-brand" href="index.html">
                         <div class="d-flex align-items-center py-3"><img class="me-2" src="../../../assets/img/icons/spot-illustrations/logo-vum-login.svg" alt="" width="80" />
@@ -397,15 +403,16 @@
                             <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser" data-bs-popper="none">
                                 <div class="bg-white dark__bg-1000 rounded-2 py-2">
                                     <span class="dropdown-item fw-bold tituloUsuarioCard">¡Hola Gabriel!</span>
-
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="pages/user/settings.html">Actualiza tus datos</a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Billetera</a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Calificar empresa</a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Gran encuesta sociodemográfica </a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Onboarding </a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Reglamento interno </a>
-                                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Ayuda </a>
+                                    <div id="menu_secundario">
+                                        <a class="dropdown-item" href="pages/user/settings.html">Actualiza tus datos</a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Billetera</a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Calificar empresa</a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Gran encuesta sociodemográfica </a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Onboarding </a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Reglamento interno </a>
+                                        <a class="dropdown-item" href="pages/authentication/card/logout.html">Ayuda </a>
+                                    </div>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="pages/authentication/card/logout.html">Cerrar Sesion</a>
                                 </div>
@@ -541,38 +548,136 @@
     <!--    END MAIN CONTENT -->
     <!-- ===============================================-->
 
-    <script>
-        window.onload = async() => {
-            const elementMenu = document.querySelector('#navbarVerticalNav');
-            // const menu = await obtenerMenu();
 
-            // elementMenu.innerHTML = menu + controlIngresoSalidaHtml;
+
+    <!-- ===========================================================================-->
+    <!-- Para controlar lo que ocurre al cerrar un modal se debe escuchar al evento -->
+    <!--                             "hide.bs.modal"                                -->
+    <!-- ===========================================================================-->
+
+    <!-- ===============================================================-->
+    <!-- Para Abrir un modal agregar a una etiqueta button la propiedad -->
+    <!--                data-bs-target="#idDeMiModal"                   -->
+    <!-- ===============================================================-->
+
+    <div class="modal fade" id="modalImagenRedireccion" aria-hidden="true" aria-labelledby="modalLabelImagenRedireccion" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            
+            <div class="modal-body" style="padding: 0;">
+                <a href="#" id="modalUrlImagenRedireccion">
+                    <img id="modalImgImagenRedireccion" style="width: 100%;">
+                </a>
+            </div>
+            
+                <div class="modal-footer" style="height: 35px;"></div>
+            
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalPricipal" aria-hidden="true" aria-labelledby="modalLabelPrincipal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabelPrincipal">Modal 2</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Hide this modal and show the first with the button below.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#modalImagenRedireccion" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let arrayMenu;
+        let elementMenuPrincipal;
+        let elementMenuSecundario;
+
+        let urlImagenRedireccion;
+        let elementModalPrincipal;
+        let elementModalRedireccion;
+        let elementModalUrlRedireccion;
+        let elementModalImgImagenRedireccion;
+
+        window.onload = async() => {
+            elementMenuPrincipal = document.querySelector('#navbarVerticalNav');
+            elementMenuSecundario = document.querySelector('#menu_secundario');
+
+            elementModalPrincipal = document.querySelector('#modalPricipal');
+            elementModalRedireccion = document.querySelector('#modalImagenRedireccion');
+            elementModalUrlRedireccion = document.querySelector('#modalUrlImagenRedireccion');
+            elementModalImgImagenRedireccion = document.querySelector('#modalImgImagenRedireccion');
+
+            elementModalRedireccion.addEventListener('show.bs.modal', abriendoModalRedireccion);
+
+            arrayMenu = await consultarMenu();
+            elementMenuPrincipal.innerHTML = await obtenerMenuPrincipal(arrayMenu[0]);
+            elementMenuSecundario.innerHTML = await obtenerMenuSecundario(arrayMenu[1]);
         }
 
 
+        const test = (e) => {
+            if (e.target.hash) {
+                console.log('TEST TEST');
+                e.preventDefault();
+            }
+        }
 
-        const obtenerMenu = async() => {
 
+        const abriendoModalRedireccion = (e) => {
+
+            const button = event.relatedTarget;
+            const imgUrl = button.getAttribute('img-url');
+            const urlRedireccion = button.getAttribute('img-redireccion');
+            const target = (urlRedireccion && urlRedireccion !== '#') ? '_blank' : '_self';
+
+            elementModalImgImagenRedireccion.src = (imgUrl) ? `../../../${ imgUrl }` : '';
+            elementModalUrlRedireccion.href = urlRedireccion;
+            elementModalUrlRedireccion.target = target;
+            elementModalUrlRedireccion.addEventListener('click', test);
+        };
+  
+
+
+        const consultarMenu = async () => {
+          
             try {
                 const url = 'http://localhost:3000/api/v1/navigator/';
-                const menus = await (await fetch(url)).json();
-                let menuHtml = '';
-                console.log('\n\nData: ', menus);
+                return (await fetch(url)).json();
+            }
+            catch (e) {
+                console.error(e);
+                alert('Error al consultar el menu principal!');
+            }
+        };
 
-                menus.forEach((menu, a) => {
+
+        const obtenerMenuPrincipal = async (menus) => {
+            let menuHtml = '';
+
+            try {
+                menus.subMenus.forEach((menu, a) => {
 
                     menuHtml += `
-                  <li class="nav-item">
-                    <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
-                      <div class="col-auto navbar-vertical-label">${menu.titulo}</div>
-                      <div class="col ps-0"><hr class="mb-0 navbar-vertical-divider" /></div>
-                    </div>
-                `;
+                        <li class="nav-item">
+                            <div class="row navbar-vertical-label-wrapper mt-3 mb-2">
+                                <div class="col-auto navbar-vertical-label">${menu.titulo}</div>
+                                <div class="col ps-0"><hr class="mb-0 navbar-vertical-divider" /></div>
+                            </div>
+                    `;
 
                     menu.subMenus.forEach((subMenu, b) => {
                         const obj = {
-                            a,
-                            b
+                            a: a+1,
+                            b: b+1
                         };
                         menuHtml += obtenerMenuHtml(subMenu, obj, true);
                     });
@@ -584,9 +689,24 @@
             } catch (e) {
 
                 console.error(e);
-                alert('Error al consultar el menu principal!');
+                alert('Error al construir el menu principal!');
             }
         };
+
+
+
+        const obtenerMenuSecundario = (menu) => {
+
+            let menuSecundarioHtml = '';
+
+            menu.subMenus.forEach(subMenu => {
+
+                menuSecundarioHtml += `<a class="dropdown-item" href="#">${subMenu.titulo}</a>`;
+
+            });
+
+            return menuSecundarioHtml;
+        }
 
 
 
@@ -617,39 +737,66 @@
 
 
 
-        const obtenerMenuHtml = (menu, obj, first = false) => {
+        const definirPropiedadesSubMenu = (menu, obj, first) => {
+            const { descripcion, clasesIcono, titulo, redireccionar, recurso, tipoAccion } = menu;
+            const tieneSubMenus = !!(menu.subMenus.length);
 
-                let menuHtml = `
-              <a class="nav-link ${(menu.tieneSubMenus) ? 'dropdown-indicator': ''}" href="#${ construirId(obj) }" data-bs-toggle="collapse" aria-expanded="false" aria-controls="${ construirId(obj) }">
-                  <div class="d-flex align-items-center" style="color: #1780E8;">
-                      ${ !(first) ? '' : `<span class="nav-link-icon"><i class="${menu.clasesIcono}"></i></span>` }
-                      <span class="nav-link-text ps-1" ${ (first) ? '' : 'style="color: #5e6e82;"' } >${menu.titulo}</span>
-                  </div>
-              </a>
-              <ul class="nav collapse false" id="${ construirId(obj) }">
-                  <li class="nav-item">
-          `;
+            return {
+                titulo,
+                recurso,
+                tipoAccion,
+                clasesIcono,
+                descripcion,
+                redireccionar,
+                tieneSubMenus,
+                colorTitulo: (first) ? '' : 'color: #5e6e82;',
+                target: (tipoAccion === 'R') ? 'target="_blank"' : '',
+                dropDown: (tieneSubMenus) ? 'dropdown-indicator' : '',
+                collapse: (tieneSubMenus) ? 'data-bs-toggle="collapse"' : '',
+                href: (tipoAccion === 'R') ? redireccionar : `#${ construirId(obj) }`,
+                icono: !(first) ? '' : `<span class="nav-link-icon"><i class="${ clasesIcono }"></i></span>`,
+                abrirModal: (tipoAccion === 'RI') ?  `img-redireccion="${ redireccionar ?? '#' }" img-url="${ recurso ?? '' }" data-bs-toggle="modal" data-bs-target="#modalImagenRedireccion"` : ''
+            }
+        };
+
+
   
-          const propiedades = Object.keys(obj);
-          const nuevaProp = nextLetter(propiedades[propiedades.length-1]);
   
-          if (menu.subMenus.length) {
+        const obtenerMenuHtml = (menu, obj, first=false) => {
+
+            const {
+                tieneSubMenus, colorTitulo, target, dropDown, collapse, href, icono, abrirModal,
+                descripcion, clasesIcono, titulo, redireccionar, recurso, tipoAccion
+            } = definirPropiedadesSubMenu(menu, obj, first);
   
-              menu.subMenus.forEach((subMenu, i) => {
-                  console.log('\n\nPropiedades: ', propiedades, ' Nueva Propiedad: '+nuevaProp);
-                  if (nuevaProp === 'e') {
-                      console.log('\n\nsubMenu: ', subMenu, '\n\n');
-                  }
-                  obj[nuevaProp] = i;
-                  menuHtml += obtenerMenuHtml(subMenu, obj);
-  
-              });
-              
-          }
-  
-          menuHtml += `</li></ul>`;
-  
-          return menuHtml;
+            let menuHtml = `
+                <a class="nav-link ${ dropDown }" href="${ href }" ${ abrirModal } ${ collapse } aria-controls="${ href }" ${ target } title="${ descripcion }">
+                    <div class="d-flex align-items-center" style="color: #1780E8;">
+                        ${ icono }
+                        <span class="nav-link-text ps-1" style="${ colorTitulo }" >${ titulo }</span>
+                    </div>
+                </a>
+            `;
+
+            if (tieneSubMenus) {
+
+                menuHtml += `<ul class="nav collapse false" id="${ construirId(obj) }"><li class="nav-item">`;
+
+                const propiedades = Object.keys(obj);
+                const nuevaProp = nextLetter(propiedades[propiedades.length-1]);
+
+                menu.subMenus.forEach((subMenu, i) => {
+                    obj[nuevaProp] = i+1;
+
+                    menuHtml += obtenerMenuHtml(subMenu, obj);
+                });
+
+                delete obj[nuevaProp];
+                
+                menuHtml += `</li></ul>`;
+            }
+
+            return menuHtml;
   
         }
   
